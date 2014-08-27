@@ -132,8 +132,8 @@ In this step we’ll write the code that creates a Case and associates it to our
   * The objects here can be substituted by any other SObject (ex: a Task).
 2. Populate the fields of the Case:
 ```
-shirtCase.Subject   = ‘Send ‘ + acc.Name + ‘ a free t-shirt!’;
-shirtCase.Priority  = ‘High’;
+shirtCase.Subject   = 'Send ' + acc.Name + ' a free t-shirt!';
+shirtCase.Priority  = 'High';
 shirtCase.AccountId = acc.Id;
 ```
   * We use a similar "dot notation" syntax when accessing fields via code as we would do in a formula field.
@@ -218,74 +218,73 @@ insert acc;
 <img src="https://lh4.googleusercontent.com/BzlBYmAwWmx1M7N4xrBwM-FaOMJ0bo-jibWg1bBPgBOTSQmkn0KZ-2Cqpw9GiPsZARv4uLWsl6zM9lNFo4uh6fDtg--se901zVq9AM0cf97Da75FMBjuJkftW44NTAHDHQ" />
 
 
-Step 3 (Optional): Double check that the Case was created properly
-We’ll be using some more advanced Apex in this step to programmatically ensure our Case was properly created. This is a testing best practice but not a requirement for deploying.
+###Step 3 (Optional): Double check that the Case was created properly###
+We'll be using some more advanced Apex in this step to programmatically ensure our Case was properly created. This is a testing best practice but not a requirement for deploying.
 
-Use SOQL to query for the created Case:
-Add the following line of code to the test class:
+1. Use SOQL to query for the created Case:
+  * Add the following line of code to the test class:
+```
 Case c = [SELECT Id, Subject, Priority FROM Case WHERE AccountId = :acc.Id];
-We’re querying for the Case and all the fields our TShirtReminder trigger is supposed to be modifying, then assigning that Case to a variable c
-We have a filter in our SOQL query that only retrieves a Case if it’s associated with the Account we created in Step 2. 
-Assert that the fields on the Case were properly set:
-Add the following lines of code to the test class:
-System.assertEquals(‘Send Salesforce University a free t-shirt!’, c.Subject);
-System.assertEquals(‘High’, c.Priority);
-System.assertEquals() is a method that takes two inputs and makes sure they’re exactly the same.
-The first input is what we expect the value to be, and the second input is the actual value.
-If the two values are the same, our test class will generate an error message.
-Your code should now look like this:
+```
+  * We're querying for the Case and all the fields our `TShirtReminder` trigger is supposed to be modifying, then assigning that Case to a variable `c`
+  * We have a filter in our SOQL query that only retrieves a Case if it's associated with the Account we created in Step 2. 
+2. Assert that the fields on the Case were properly set:
+  * Add the following lines of code to the test class:
+```
+System.assertEquals('Send Salesforce University a free t-shirt!', c.Subject);
+System.assertEquals('High', c.Priority);
+```
+  * System.assertEquals() is a method that takes two inputs and makes sure they're exactly the same.
+  * The first input is what we expect the value to be, and the second input is the actual value.
+  * If the two values are the same, our test class will generate an error message.
+3. Your code should now look like this:
+<img src="https://lh6.googleusercontent.com/-n37wjoTxsf5kfc2j1beXtQgY8SDucZO9AQgftpuKBaVkXUd00nveZd4fx1Nu-AEajKdF_WKVfAp_iubbxEOXqJ9FdNZzcZ1LK6EDThLQV-G1i6Dp3Q3pI3N4kz6NdFZpw" />
 
 
+###Step 4: Run your test class###
+Let's run our test class and make sure we have the required code coverage.
+
+1. Run your test class:
+  1. Save your test class and hit the `Run Test` button.
+  2. A green check box will appear after a short processing time, indicating that no errors were found.
+2. Check our trigger code coverage percentage:
+  1. Navigate back to our `TShirtReminder` trigger:
+  2. `Your Name >> Setup`
+  3. `Develop >> Apex Triggers >> TShirtReminder`
+  4. The `Code Coverage` field should read `100% (6/6)`
+3. Your trigger is now ready to be deployed to a production environment!
+<img src="https://lh4.googleusercontent.com/Et_FQHJG7sQgtOSfJUEZuyGENyu9pqsP5XLhtR_OnNmPusDD38NTWEKeFWwIUyvsvyNI_LO17tIykluqizpjZvuRFZazE7QzJiEVBD8GQkAOULgi_ZFYPyVZRQVrgZBsQw" />
 
 
-Step 4: Run your test class
-Let’s run our test class and make sure we have the required code coverage.
-
-Run your test class:
-Save your test class and hit the Run Test button.
-A green check box will appear after a short processing time, indicating that no errors were found.
-Check our trigger code coverage percentage:
-Navigate back to our TShirtReminder trigger:
-Your Name >> Setup
-Develop >> Apex Triggers >> TShirtReminder
-The Code Coverage field should read 100% (6/6).
-Your trigger is now ready to be deployed to a production environment!
-
-
-
-
-Deploying your Code
-Introduction
+##Deploying your Code##
+###Introduction###
 The final piece is to deploy your code into a production environment. 
 
-The deployment process migrates your code from a Sandbox environment into your production Salesforce org. During the deployment phase, Salesforce checks your test code coverage to see if you’ve reached a minimum of 75% overall code coverage. If so, your code will be immediately pushed to production. If not, your deployment will fail until you modify your test classes to reach the 75% code coverage requirement.
+The deployment process migrates your code from a Sandbox environment into your production Salesforce org. During the deployment phase, Salesforce checks your test code coverage to see if you've reached a minimum of 75% overall code coverage. If so, your code will be immediately pushed to production. If not, your deployment will fail until you modify your test classes to reach the 75% code coverage requirement.
 
 Note that code deployed to a production environment must be deployed from a Sandbox environment - DE orgs cannot push code to production.
 
 There are multiple ways to deploy code. We’ll be using a feature called Change Sets, which allows you to deploy code using a simple point-and-click interface. 
 
-Step 1: Create a Deployment Connection
+###Step 1: Create a Deployment Connection###
 Before we can deploy using Change Sets, we must make sure our Sandbox org is connected to a production environment. This is a one-time setup step for deploying any code from your Sandbox to production orgs. Future code deployments will be pre-configured as a result of this task.
 
-Create a deployment connection from your production org:
-Login to your production org.
-Your name >> Setup
-Deploy >> Deployment Connections
-Click on the Sandbox you’d like to deploy code from.
-Check the Allow Inbound Changes checkbox.
-
-
-
-Confirm that your Sandbox org is configured to deploy to your production org:
-Login to your Sandbox org.
-Your name >> Setup
-Deploy >> Deployment Connections
-Click on the Production org.
-Ensure that the Accept Outbound Changes checkbox is checked.
-
-
-
+1. Create a deployment connection from your production org:
+  1. Login to your production org.
+  2. `Your name >> Setup`
+  3. `Deploy >> Deployment Connections`
+  4. Click on the Sandbox you'd like to deploy code from.
+  5. Check the `Allow Inbound Changes` checkbox.
+<img src="https://lh6.googleusercontent.com/SaqxI6KK5I9fqc8fu3xBPtoyACIOOfWVELvZ8LSxsxrBIiBKvWlrrxbShE9KFXtjryOjStxatDKuPs5hQg2xQCB7OQSoRQ9aKyxONhL_y60FQuICX0RsAkbl3Si1qCUkRQ" />
+2. Confirm that your Sandbox org is configured to deploy to your production org:
+  1. Login to your Sandbox org.
+  2. `Your name >> Setup`
+  3. `Deploy >> Deployment Connections`
+  4. Click on the production org.
+  5. Ensure that the `Accept Outbound Changes` checkbox is checked.
+<img src="https://lh3.googleusercontent.com/nNUOUWlusq0NLQ8Z71oYOVpj3gClTCIbpi_nXkLD4C9RSVMRxMfYdHfwLqSbOl8txwRsMcTojU4XSmw_PXVKyhmyqax0RgHOpZe6a6nh7DaGviOTJ8PHBoAeMDGeHAsRmg" />
 Congratulations! You’re now ready to deploy code!
+
 Step 1: Create a Change Set
 A Change Set is a package of components that you want to move from one org to another. In this scenario we’ll be adding our trigger and test class to our Change Set, however you can also package other components such as custom fields, workflow rules, validations, etc.
 
