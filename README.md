@@ -101,8 +101,8 @@ In this step we’ll modify the pre-made trigger template for our specific needs
 ###Step 3: Create a loop in your trigger###
 Since our trigger runs whenever an Account is created, it’s possible that many Accounts might be created at the exact same time (for example, through a mass insert using Data Loader). We’ll use a loop to repeat our trigger’s logic for each record in our trigger.
 
-1. Create a for loop to repeat logic among multiple records
-2. Add the following lines of code in between your trigger’s brackets:
+1. Create a for loop to repeat logic among multiple records.
+2. Add the following lines of code in between your trigger's brackets:
 
 ```
 for (Account acc : Trigger.new) {
@@ -113,9 +113,9 @@ for (Account acc : Trigger.new) {
   * How this loop works:
     * In human terms, the loop says "for every Account in our trigger, repeat all the code within these brackets".
     * A for loop does the following:
-      1. Creates a variable that represents one record out of a list
-      2. Iterates across every record in the list, assigning it to the variable
-      3. Repeats all the code within its brackets for each record
+      1. Creates a variable that represents one record out of a list.
+      2. Iterates across every record in the list, assigning it to the variable.
+      3. Repeats all the code within its brackets for each record.
         * `acc` is a variable we're assigning to every Account going through our trigger. We precede it with Account because the variable `acc` is always an Account.
         * `Trigger.new` is the list of every account going through our trigger. Since our trigger runs after insert, `Trigger.new` is every account currently being inserted, which could be one or many accounts.
 3. Your trigger should now look like this:
@@ -124,35 +124,35 @@ for (Account acc : Trigger.new) {
 Every trigger follows the same general pattern you see above!
 
 ###Step 4: Add business logic to your trigger###
-In this step we’ll write the code that creates a Case and associates it to our Account
+In this step we’ll write the code that creates a Case and associates it to our Account.
 
 1. Create a new Case:
 ```Case shirtCase = new Case();```
-  * We create a new Case and assign it to a shirtCase variable
-  * The objects here can be substituted by any other SObject (ex: a Task)
+  * We create a new Case and assign it to a shirtCase variable.
+  * The objects here can be substituted by any other SObject (ex: a Task).
 2. Populate the fields of the Case:
 ```
 shirtCase.Subject   = ‘Send ‘ + acc.Name + ‘ a free t-shirt!’;
 shirtCase.Priority  = ‘High’;
 shirtCase.AccountId = acc.Id;
 ```
-  * We use a similar "dot notation" syntax when accessing fields via code as we would do in a formula field
-  * Text is always wrapped in single quotes
-  * `acc` is the Account variable of the current Account we're iterating through
-3. Insert the case into the database
+  * We use a similar "dot notation" syntax when accessing fields via code as we would do in a formula field.
+  * Text is always wrapped in single quotes.
+  * `acc` is the Account variable of the current Account we're iterating through.
+3. Insert the case into the database:
 ```insert shirtCase;```
-  * This line of code saves the Case to the database
-
+  * This line of code saves the Case to the database.
 4. Your trigger should now look like this:
 <img src="https://lh4.googleusercontent.com/V_oBGgRJlEafrHmtqS74m0LRoD08eMBu4HwDIwDI1Lxd_pNMU4RSYwEVMhPzEkUm1wylJtFEXlvmPbwvKCZFXyjgapDp18Cc11UicpiMU07uzhyHWHzia2dw2YC2s1-jrg" />
 
-Step 5: Check if your trigger works!
+###Step 5: Check if your trigger works!###
 Your trigger is now active in your org and ready for testing!
-Go to the Accounts tab
-Create a new Account with name “Salesforce University”.
-Save your Account
-Check to see if a Case was created on the Account!
 
+1. Go to the Accounts tab.
+2. Create a new Account with name `Salesforce University`
+3. Save your Account.
+4. Check to see if a Case was created on the Account!
+<img src="https://lh6.googleusercontent.com/fSPO4z8jwPzZusnk1-yju1Xk6Ip_TOTvbIDrmL-3T-pN8czOjJWJf5PDCGISvhSCvwZZkgae-gYL77KIVf6qm_uEWvB0AX58xht_4PnnLzPh67r0jdg5KNyMRDvmYBXICw" />
 
 Create a Test Class
 Introduction
