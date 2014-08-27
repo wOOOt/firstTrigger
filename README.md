@@ -169,9 +169,9 @@ That means that our test class needs to run at least 75% of the code we wrote in
 
 Remember when we manually checked to see if our trigger worked in step 5 of the previous section? We basically want to do the exact same thing in our test class, but programmatically:
 
-1. Create a new Account and save it
-2. Check to see if a Case was automatically created on the Account
-3. Make sure the Case was created with the proper fields populated
+1. Create a new Account and save it.
+2. Check to see if a Case was automatically created on the Account.
+3. Make sure the Case was created with the proper fields populated.
 
 ###Step 1: Set up your test class###
 In this step we’ll set up our general test class template.
@@ -235,7 +235,7 @@ Case c = [SELECT Id, Subject, Priority FROM Case WHERE AccountId = :acc.Id];
 System.assertEquals('Send Salesforce University a free t-shirt!', c.Subject);
 System.assertEquals('High', c.Priority);
 ```
-  * System.assertEquals() is a method that takes two inputs and makes sure they're exactly the same.
+  * `System.assertEquals()` is a method that takes two inputs and makes sure they're exactly the same.
   * The first input is what we expect the value to be, and the second input is the actual value.
   * If the two values are the same, our test class will generate an error message.
 3. Your code should now look like this:
@@ -324,7 +324,7 @@ Our Change Set is now ready to be deployed to a production org.
 <img src="https://lh4.googleusercontent.com/u5Jojob6HuqHLWR44-uFbPXi4pmAH4UEEaNXOmduZBcJf826OqzAAKgm2JiAm98sUBzpH0zom5WiKai5VnHYT1Ti9-e74LWW0Brpdy_6UZdGy4rwi2VOMNSZxreG99y_Mg" />
 2. Accept the Change Set in your production org:
   1.Login to your production org.
-  2. `Your Name >> Setup 
+  2. `Your Name >> Setup`
   3. `Deploy >> Inbound Change Sets`
   4. Click the `T-Shirt Trigger and Test Class` Change Set.
     * Note that it can take up to 30 minutes for your inbound Change Set to appear in your production org. Most of the times it takes no more than a few minutes.
