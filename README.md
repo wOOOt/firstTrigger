@@ -102,9 +102,11 @@ In this step we’ll modify the pre-made trigger template for our specific needs
 Since our trigger runs whenever an Account is created, it’s possible that many Accounts might be created at the exact same time (for example, through a mass insert using Data Loader). We’ll use a loop to repeat our trigger’s logic for each record in our trigger.
 1. Create a for loop to repeat logic among multiple records
 2. Add the following lines of code in between your trigger’s brackets:
-`for (Account acc : Trigger.new) {`
-``
-`}`
+```
+for (Account acc : Trigger.new) {
+
+}
+```
   * How this loop works:
     * In human terms, the loop says "for every Account in our trigger, repeat all the code within these brackets".
     * A for loop does the following:
