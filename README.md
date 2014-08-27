@@ -125,6 +125,7 @@ Every trigger follows the same general pattern you see above!
 
 ###Step 4: Add business logic to your trigger###
 In this step we’ll write the code that creates a Case and associates it to our Account
+
 1. Create a new Case:
 ```Case shirtCase = new Case();```
   * We create a new Case and assign it to a shirtCase variable
@@ -141,6 +142,7 @@ shirtCase.AccountId = acc.Id;
 3. Insert the case into the database
 ```insert shirtCase;```
   * This line of code saves the Case to the database
+
 4. Your trigger should now look like this:
 <img src="https://lh4.googleusercontent.com/V_oBGgRJlEafrHmtqS74m0LRoD08eMBu4HwDIwDI1Lxd_pNMU4RSYwEVMhPzEkUm1wylJtFEXlvmPbwvKCZFXyjgapDp18Cc11UicpiMU07uzhyHWHzia2dw2YC2s1-jrg" />
 
