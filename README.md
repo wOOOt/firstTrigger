@@ -154,46 +154,47 @@ Your trigger is now active in your org and ready for testing!
 4. Check to see if a Case was created on the Account!
 <img src="https://lh6.googleusercontent.com/fSPO4z8jwPzZusnk1-yju1Xk6Ip_TOTvbIDrmL-3T-pN8czOjJWJf5PDCGISvhSCvwZZkgae-gYL77KIVf6qm_uEWvB0AX58xht_4PnnLzPh67r0jdg5KNyMRDvmYBXICw" />
 
-Create a Test Class
-Introduction
-In this section we’ll create a test class for our TShirtReminder trigger.
+##Create a Test Class##
+###Introduction###
+In this section we'll create a test class for our `TShirtReminder` trigger.
 
-Test classes are a best practice in any programming language. Since Salesforce is a cloud platform, test classes are required to prevent organizations from deploying code that doesn’t work.
+Test classes are a best practice in any programming language. Since Salesforce is a cloud platform, test classes are required to prevent organizations from deploying code that doesn't work.
 
 Even though our trigger works in our Sandbox/DE org, we won’t be able to deploy it to a production org unless we have a test class.
 
-How test classes work
-75% is the magic number for passing Salesforce’s code coverage requirement.
+###How test classes work###
+75% is the magic number for passing Salesforce's code coverage requirement.
 
 That means that our test class needs to run at least 75% of the code we wrote in our trigger before we’re able to deploy it to a production environment. 
 
 Remember when we manually checked to see if our trigger worked in step 5 of the previous section? We basically want to do the exact same thing in our test class, but programmatically:
-Create a new Account and save it
-Check to see if a Case was automatically created on the Account
-Make sure the Case was created with the proper fields populated
+1. Create a new Account and save it
+2. Check to see if a Case was automatically created on the Account
+3. Make sure the Case was created with the proper fields populated
 
-Step 1: Set up your test class
+###Step 1: Set up your test class###
 In this step we’ll set up our general test class template.
 
-Navigate to the Apex class editor page:
-Your Name >> Setup
-Develop >> Apex Classes
-Hit the New button to create a new Apex class
-Type the following code into the code editor:
-	@isTest
-	public class TestTShirtReminder {
-		static testmethod void createAccount() {
+1. Navigate to the Apex class editor page:
+2. `Your Name >> Setup`
+3. `Develop >> Apex Classes`
+4. Hit the `New` button to create a new Apex class.
+5. Type the following code into the code editor:
+```
+@isTest
+public class TestTShirtReminder {
+	static testmethod void createAccount() {
 
-		}
 	}
-What you’re doing:
-The @isTest lets Salesforce know that you’re writing a test class. This helps them determine if you’ll be able to deploy code.
-TestTShirtReminder is the name of our test class
-createAccount is the name of our test method that will run when Salesforce is testing your code
-Don’t worry about what the rest of the code says, every test class uses the same language so you’ll simply copy/paste that syntax in the future.
-Your test class should look like this so far:
-
-
+}
+```
+  * What you're doing:
+  * The `@isTest` lets Salesforce know that you're writing a test class. This helps them determine if you'll be able to deploy code.
+  * `TestTShirtReminder` is the name of our test class.
+  * `createAccount` is the name of our test method that will run when Salesforce is testing your code.
+  * Don't worry about what the rest of the code says, every test class uses the same language so you'll simply copy/paste that syntax in the future.
+6. Your test class should look like this so far:
+7. <img src="https://lh5.googleusercontent.com/M6h8bgXvfjtBT_r3366x8R46hl-OHl8pOwc7EUs3hklzLfoPsQ6Gj-_BqoNWmt_oMXmz8C7q9PaUds4YpDPoMn0QX_VTt5vRr_aFQ4L5h2s16aI5x_PuJ0a9mAwcOa_u8g" />
 
 Step 2: Add business logic to your test class
 We’ll add business logic in our code that will make at least 75% of the code in our trigger run. Since our trigger runs whenever a new Account is created, we simply need to create a new Account and 100% of the lines of code in our trigger will run.
