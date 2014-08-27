@@ -84,38 +84,37 @@ In this step we’ll modify the pre-made trigger template for our specific needs
     1. Events describe when our trigger should run. 
     2. Each event has a type and an operation.
     3. There are two types:
-      * before
-      * after
+      * `before`
+      * `after`
     4. There are six operations:
-      * update
-      * insert
-      * delete
-      * merge
-      * undelete
-      * upsert
+      * `update`
+      * `insert`
+      * `delete`
+      * `merge`
+      * `undelete`
+      * `upsert`
     5. Any type can be combined with any operation to make an event. Multiple events can be defined in your trigger by separating them using commas, ie: `after update, after insert, before delete`
-3. For this trigger, we chose `after insert` because we want this trigger to run only after an Account is created. We do not want this trigger to run for example when an Account is updated or deleted
+3. For this trigger, we chose `after insert` because we want this trigger to run only after an Account is created. We do not want this trigger to run for example when an Account is updated or deleted.
 4. Your trigger should now look like this:
 <img src="https://lh4.googleusercontent.com/guInUioNXRfI0YZad0oWAao0heGYnY5mxm3bK1quoPr6tJQVnqO13lt1fxrZ8NUUeraBRxSrEFHDpGVCyNghzAKPgEesCxnU2KwFUiN5c2XLdZwgwu7W5BeOrnUJMY3NzQ" />
 
-
-Step 3: Create a loop in your trigger
+###Step 3: Create a loop in your trigger###
 Since our trigger runs whenever an Account is created, it’s possible that many Accounts might be created at the exact same time (for example, through a mass insert using Data Loader). We’ll use a loop to repeat our trigger’s logic for each record in our trigger.
-
-Create a for loop to repeat logic among multiple records
-Add the following lines of code in between your trigger’s brackets
-for (Account acc : Trigger.new) {
-
-}
-How this loop works:
-In human terms, the loop says “for every Account in our trigger, repeat all the code within these brackets”.
-A for loop does the following:
-Creates a variable that represents one record out of a list
-Iterates across every record in the list, assigning it to the variable
-Repeats all the code within its brackets for each record
-acc is a variable we’re assigning to every Account going through our trigger. We precede it with Account because the variable acc is always an Account.
-Trigger.new is the list of every account going through our trigger. Since our trigger runs after insert, Trigger.new is every account currently being inserted, which could be one or many accounts.
-Your trigger should now look like this:
+1. Create a for loop to repeat logic among multiple records
+2. Add the following lines of code in between your trigger’s brackets:
+`for (Account acc : Trigger.new) {`
+``
+`}`
+  * How this loop works:
+    * In human terms, the loop says "for every Account in our trigger, repeat all the code within these brackets".
+    * A for loop does the following:
+      1. Creates a variable that represents one record out of a list
+      2. Iterates across every record in the list, assigning it to the variable
+      3. Repeats all the code within its brackets for each record
+        * `acc` is a variable we're assigning to every Account going through our trigger. We precede it with Account because the variable `acc` is always an Account.
+        * `Trigger.new` is the list of every account going through our trigger. Since our trigger runs after insert, `Trigger.new` is every account currently being inserted, which could be one or many accounts.
+3. Your trigger should now look like this:
+<img src="https://lh3.googleusercontent.com/HYDDVXpiCn-j3EDcYmZeJHSCcAZBhhG6dXREkEjnyQHjs-UfwzWNkSTnt5P6OkmM54rbXA9s9kw-6vThMhnM2w_3wUwS2t9S5BJM8BqoYlgMCu27ozW9F7mSjxbORYSlhA" />
 
 Every trigger follows the same general pattern you see above!
 
