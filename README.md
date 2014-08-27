@@ -285,54 +285,49 @@ Before we can deploy using Change Sets, we must make sure our Sandbox org is con
 <img src="https://lh3.googleusercontent.com/nNUOUWlusq0NLQ8Z71oYOVpj3gClTCIbpi_nXkLD4C9RSVMRxMfYdHfwLqSbOl8txwRsMcTojU4XSmw_PXVKyhmyqax0RgHOpZe6a6nh7DaGviOTJ8PHBoAeMDGeHAsRmg" />
 Congratulations! You’re now ready to deploy code!
 
-Step 1: Create a Change Set
-A Change Set is a package of components that you want to move from one org to another. In this scenario we’ll be adding our trigger and test class to our Change Set, however you can also package other components such as custom fields, workflow rules, validations, etc.
+###Step 1: Create a Change Set###
+A Change Set is a package of components that you want to move from one org to another. In this scenario we'll be adding our trigger and test class to our Change Set, however you can also package other components such as custom fields, workflow rules, validations, etc.
 
-Navigate to the Change Set wizard in your Sandbox environment:
-Your name >> Setup
-Deploy >> Outbound Change Sets
-Hit the New button to create a new Change Set.
-Name: T-Shirt Trigger and Test Class
-Description: Our first Change Set!
-Save the Change Set.
-Your Change Set should now look like this:
-
-
-
-
-Step 2: Add our Trigger and Test Class to the Change Set
-We’ll add both our trigger and our test class to the Change Set. Note that both should be deployed at the same time to meet the test code coverage requirements.
-Add the TShirtReminder trigger to our Change Set.
-Click the Add button to add a component to the Change Set.
-Change the Component Type picklist to Apex Trigger.
-Check the TShirtReminder trigger and add it to the Change Set.
-Add the TestTShirtReminder test class to our Change Set.
-Click the Add button to add a component to the Change Set.
-Change the Component Type picklist to Apex Class.
-Check the TestTShirtReminder Apex Class and add it to the Change Set.
-Your Change Set should now look like this:
+1. Navigate to the Change Set wizard in your Sandbox environment:
+  1. `Your name >> Setup`
+  2. `Deploy >> Outbound Change Sets`
+  3. Hit the `New` button to create a new Change Set.
+    * Name: `T-Shirt Trigger and Test Class`
+    * Description: `Our first Change Set!`
+  4. Save the Change Set.
+2. Your Change Set should now look like this:
+<img src="https://lh6.googleusercontent.com/k3uGpUdrcWAnIEE34Iq-9b9T7sMmDtEipkn1FapQ93mcNl6ud-dqgUUQ_g7TsFvZBNqox_Hbh8smDLaujWVnGIHD2g39FY-zjOJtweX31COfmnOQzDBFqLqSTqOb6hh05w" />
 
 
+###Step 2: Add our Trigger and Test Class to the Change Set###
+We'll add both our trigger and our test class to the Change Set. Note that both should be deployed at the same time to meet the test code coverage requirements.
+1. Add the `TShirtReminder` trigger to our Change Set.
+  1. Click the `Add` button to add a component to the Change Set.
+  2. Change the Component Type picklist to `Apex Trigger`.
+  3. Check the `TShirtReminder` trigger and add it to the Change Set.
+2. Add the `TestTShirtReminder` test class to our Change Set.
+  1. Click the `Add` button to add a component to the Change Set.
+  2. Change the Component Type picklist to `Apex Class`.
+  3. Check the `TestTShirtReminder` Apex Class and add it to the Change Set.
+3. Your Change Set should now look like this:
+<img src="https://lh3.googleusercontent.com/GCMNF3emtCodzd9I3n7JkkxFyoRYa7Ir1wHaKXTlQVvVR4umjAQyhL1GOyt5WieQQ9NSNHZ9iaQr6QnbZKVxCRFYNZveI7lV16VH6JqatZqtQbTGFi5GS2Wiv86yaRn4qw" />
 
 
-Step 3: Deploy our Change Set
+###Step 3: Deploy our Change Set###
 Our Change Set is now ready to be deployed to a production org.
 
-Upload the Change Set:
-Hit the Upload button.
-Select the Production org.
-Click the Upload button.
+1. Upload the Change Set:
+  1. Hit the `Upload` button.
+  2. Select the `Production` org.
+  3. Click the` Upload` button.
+<img src="https://lh4.googleusercontent.com/u5Jojob6HuqHLWR44-uFbPXi4pmAH4UEEaNXOmduZBcJf826OqzAAKgm2JiAm98sUBzpH0zom5WiKai5VnHYT1Ti9-e74LWW0Brpdy_6UZdGy4rwi2VOMNSZxreG99y_Mg" />
+2. Accept the Change Set in your production org:
+  1.Login to your production org.
+  2. `Your Name >> Setup 
+  3. `Deploy >> Inbound Change Sets`
+  4. Click the `T-Shirt Trigger and Test Class` Change Set.
+    * Note that it can take up to 30 minutes for your inbound Change Set to appear in your production org. Most of the times it takes no more than a few minutes.
+  5. Click the `Deploy` button.
+<img src="https://lh6.googleusercontent.com/IqfIs2f3RaMpXMGXJj1nBUsOJeaLKkHwm-UsfTUE-7DTxDQKAZ84cD6NyXpHqJkx967jTnYaZqnaVxUrSlwwwQuJH5x4XY-rjWYNAh6g6WfBUdZOs-b-4jiX4T3Qkl9sBQ" />
 
-
-
-Accept the Change Set in your production org:
-Login to your production org.
-Your Name >> Setup
-Deploy >> Inbound Change Sets
-Click the T-Shirt Trigger and Test Class Change Set.
-Note that it can take up to 30 minutes for your inbound Change Set to appear in your production org. Most of the times it takes no more than a few minutes.
-Click the Deploy button.
-
-
-
-Congratulations, your code is now deployed in your production org! 
+##Congratulations, your code is now deployed in your production org!##
