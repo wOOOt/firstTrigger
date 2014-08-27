@@ -36,68 +36,67 @@ This workbook is designed to be used with a Sandbox or Developer Edition organiz
 1. In your browser, go to https://developer.salesforce.com/signup.
 2. Fill in the fields about you and your company.
 3. In the Email Address field, make sure to use a public address you can easily check from a Web browser.
-4. Type a unique Username. Note that this field is also in the form of an email address, but it does not have to be the same as your email address, and in fact, it’s usually better if they aren’t the same. Your username is your login and your identity on developer.salesforce.com, so you’re often better served by choosing a username such as firstname@lastname.com.
-5. Read and then select the checkbox for the Master Subscription Agreement and then click Submit Registration.
+4. Type a unique Username. Note that this field is also in the form of an email address, but it does not have to be the same as your email address, and in fact, it’s usually better if they aren’t the same. Your username is your login and your identity on `developer.salesforce.com`, so you’re often better served by choosing a username such as `firstname@lastname.com`.
+5. Read and then select the checkbox for the `Master Subscription Agreement` and then click `Submit Registration`.
 6. In a moment you’ll receive an email with a login link. Click the link and change your password.
 You will only be able to deploy your trigger to a production environment if you use Sandbox org. Code written in DE orgs cannot be deployed to production environments.
 
-Create an Apex trigger
-Introduction
+##Create an Apex trigger##
+###Introduction###
 
 We’ll be making a trigger that automatically creates a new Case when an Account is created in the database. We’ll also use values of the Account to populate fields on the Case we’re creating.
 
-The basic logic will go like this:
-A new Account is created in Salesforce
-Trigger begins:
-A new Case is created:
-The Case will be associated with the Account
-The Subject field of the Case will be set to: “Send {!Account.Name} a free t-shirt!”
-The Priority field of the Case will be set to High
+1. The basic logic will go like this:
+  1. A new Account is created in Salesforce
+  2. Trigger begins:
+    1. A new Case is created:
+    2. The Case will be associated with the Account
+    3. The Subject field of the Case will be set to: "Send {!Account.Name} a free T-shirt!"
+    4. The Priority field of the Case will be set to High
 
 So when an Account is created like this:
-
+<img src="https://lh4.googleusercontent.com/Ktr9JkX2BoOBFUCJTYV1uSDV95dGNtzErR3MosF85Vxw4a_UbWPj46A8JXrUzVmi3uMHp7EJ6wswNd_oWjPB2fenjnQ1ivjRIC-Dm5Rl2QjeEfgWMjKwGlfNp-a3nUBXew" />
 
 The trigger will automatically create a Case like this:
-
+<img src="https://lh6.googleusercontent.com/fgy_Y9_yL0X7KxJG0x2LCdAXURU6QLV7qyh7100diiQ47Vj_R80Q3hxVBeTxv7bzKroXQYCo2REKaYocT3-mb-H25voT7Ux89rVX45bTyQUQOxLneKR-EaNljVJOQXpQZw" />
 
 This trigger will do something that’s currently impossible using any point-and-click functionality: automatically create new records.
 
 The purpose of this tutorial is not to build a trigger with complex logic. This tutorial is meant to give you an introduction to coding and teach you the fundamentals of Apex triggers so you can have an understanding of what a trigger is and how it works.
 
-Step 1: Navigate to the trigger builder page
-Launch your browser and log into Salesforce.
-Go to the trigger page of the Account object
-Your Name >> Setup
-Customize >> Accounts >> Triggers
-Click the New button to create a new trigger
-The following page should be visible to you. A pre-made trigger template is automatically created for your convenience:
+###Step 1: Navigate to the trigger builder page###
+1. Launch your browser and log into Salesforce.
+2. Go to the trigger page of the Account object
+  1. `Your Name >> Setup`
+  2. `Customize >> Accounts >> Triggers`
+  3. Click the `New` button to create a new trigger
+3. The following page should be visible to you. A pre-made trigger template is automatically created for your convenience:
+<img src="https://lh4.googleusercontent.com/pb-VyKLTt6gk_BD6iKRU97-B3aqSnwFGUQNW_z9VBD0JorxDE6f_19GTJIaVvbSd8wgQxILJNkrCYu2MlrT2xIeDqATexmHj8EqvmaPztWdukUg_ZjzcRPV2MFS2l1iMow" />
 
-
-
-Step 2: Describe the high-level details of your trigger
+###Step 2: Describe the high-level details of your trigger###
 In this step we’ll modify the pre-made trigger template for our specific needs
-Name your trigger
-Replace <name> with the name of our trigger: TShirtReminder
-Note that trigger names should contain only alphanumeric characters and no spaces. 
-Although this isn’t required, it is customary for the first letter of each word in the name to be capitalized for easy reading
-Define the trigger’s events
-Replace <events> with after insert
-Events describe when our trigger should run. 
-Each event has a type and an operation.
-There are two types:
-before
-after
-There are six operations:
-update
-insert
-delete
-merge
-undelete
-upsert
-Any type can be combined with any operation to make an event. Multiple events can be defined in your trigger by separating them using commas, ie: after update, after insert, before delete
-For this trigger, we chose after insert because we want this trigger to run only after an Account is created. We do not want this trigger to run for example when an Account is updated or deleted
-Your trigger should now look like this:
-
+1. Name your trigger:
+  1. Replace `<name>` with the name of our trigger: `TShirtReminder`
+  2. Note that trigger names should contain only alphanumeric characters and no spaces. 
+  3. Although this isn’t required, it is customary for the first letter of each word in the name to be capitalized for easy reading
+2. Define the trigger's events:
+  1. Replace `<events>` with `after insert`
+    1. Events describe when our trigger should run. 
+    2. Each event has a type and an operation.
+    3. There are two types:
+      * before
+      * after
+    4. There are six operations:
+      * update
+      * insert
+      * delete
+      * merge
+      * undelete
+      * upsert
+    5. Any type can be combined with any operation to make an event. Multiple events can be defined in your trigger by separating them using commas, ie: `after update, after insert, before delete`
+3. For this trigger, we chose `after insert` because we want this trigger to run only after an Account is created. We do not want this trigger to run for example when an Account is updated or deleted
+4. Your trigger should now look like this:
+<img src="https://lh4.googleusercontent.com/guInUioNXRfI0YZad0oWAao0heGYnY5mxm3bK1quoPr6tJQVnqO13lt1fxrZ8NUUeraBRxSrEFHDpGVCyNghzAKPgEesCxnU2KwFUiN5c2XLdZwgwu7W5BeOrnUJMY3NzQ" />
 
 
 Step 3: Create a loop in your trigger
