@@ -123,25 +123,26 @@ for (Account acc : Trigger.new) {
 
 Every trigger follows the same general pattern you see above!
 
-
-Step 4: Add business logic to your trigger
+###Step 4: Add business logic to your trigger###
 In this step we’ll write the code that creates a Case and associates it to our Account
-Create a new Case:
-	Case shirtCase = new Case();
-We create a new Case and assign it to a shirtCase variable
-The objects here can be substituted by any other SObject (ex: a Task)
-Populate the fields of the Case:
-	shirtCase.Subject   = ‘Send ‘ + acc.Name + ‘ a free t-shirt!’;
-	shirtCase.Priority  = ‘High’;
-	shirtCase.AccountId = acc.Id;
-We use a similar “dot notation” syntax when accessing fields via code as we would do in a formula field
-Text is always wrapped in single quotes
-acc is the Account variable of the current Account we’re iterating through
-Insert the case into the database
-	insert shirtCase;
-This line of code saves the Case to the database
-Your trigger should now look like this:
-
+1. Create a new Case:
+```Case shirtCase = new Case();```
+  * We create a new Case and assign it to a shirtCase variable
+  * The objects here can be substituted by any other SObject (ex: a Task)
+2. Populate the fields of the Case:
+```
+shirtCase.Subject   = ‘Send ‘ + acc.Name + ‘ a free t-shirt!’;
+shirtCase.Priority  = ‘High’;
+shirtCase.AccountId = acc.Id;
+```
+  * We use a similar "dot notation" syntax when accessing fields via code as we would do in a formula field
+  * Text is always wrapped in single quotes
+  * `acc` is the Account variable of the current Account we're iterating through
+3. Insert the case into the database
+```insert shirtCase;```
+  * This line of code saves the Case to the database
+4. Your trigger should now look like this:
+<img src="https://lh4.googleusercontent.com/V_oBGgRJlEafrHmtqS74m0LRoD08eMBu4HwDIwDI1Lxd_pNMU4RSYwEVMhPzEkUm1wylJtFEXlvmPbwvKCZFXyjgapDp18Cc11UicpiMU07uzhyHWHzia2dw2YC2s1-jrg" />
 
 Step 5: Check if your trigger works!
 Your trigger is now active in your org and ready for testing!
