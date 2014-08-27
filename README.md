@@ -5,10 +5,10 @@ This workbook shows you how to write a simple Apex trigger and deploy it in a pr
 
 Apex triggers are used to extend the capabilities of the Salesforce platform beyond the functionality available to point-and-click admins. While workflow rules, visual flows, validation rules, and formula fields are powerful and simple to use, they aren’t able to accomplish advanced functionality available in Apex triggers, such as:
 
-	- Creating new records
-Referencing multiple related or unrelated records
-Access special information about your database, such as permissions
-Integrations with external systems
+* Creating new records
+* Referencing multiple related or unrelated records
+* Access special information about your database, such as permissions
+* Integrations with external systems
 
 This workbook will teach you all the components needed deploy an Apex trigger:
 
