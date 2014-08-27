@@ -1,6 +1,6 @@
 Hands-On Workshop: Write your first Apex Trigger!
+---------------
 
-About the Workbook
 This workbook shows you how to write a simple Apex trigger and deploy it in a production org. No prior coding experience is needed, however, a basic understanding of the Salesforce platform is helpful.
 
 Apex triggers are used to extend the capabilities of the Salesforce platform beyond the functionality available to point-and-click admins. While workflow rules, visual flows, validation rules, and formula fields are powerful and simple to use, they aren’t able to accomplish advanced functionality available in Apex triggers, such as:
