@@ -1,5 +1,6 @@
 #Hands-On Workshop: Write your first Apex Trigger!#
 
+##About the Workbook##
 This workbook shows you how to write a simple Apex trigger and deploy it in a production org. No prior coding experience is needed, however, a basic understanding of the Salesforce platform is helpful.
 
 Apex triggers are used to extend the capabilities of the Salesforce platform beyond the functionality available to point-and-click admins. While workflow rules, visual flows, validation rules, and formula fields are powerful and simple to use, they aren’t able to accomplish advanced functionality available in Apex triggers, such as:
@@ -17,28 +18,29 @@ This workbook will teach you all the components needed deploy an Apex trigger:
 
 Apex triggers are a fun and surprisingly easy way to unlock the potential of your Salesforce org!
 
-#Audience#
+###Audience###
 These tutorials are intended for admins who have experience working on the Salesforce platform but no coding background.
 
 Users should be familiar with the following basic concepts of Salesforce before delving into Apex code:
 
-How to create an App and Database
-Customizing the User Interface
-Add app logic using workflow rules, formula fields, and validation rules
-Analyzing data using Reports and Dashboards
+* How to create an App and Database
+* Customizing the User Interface
+* Add app logic using workflow rules, formula fields, and validation rules
+* Analyzing data using Reports and Dashboards
 
 We recommend referring to the Force.com Workbook to learn more about the basic Salesforce concepts listed above.
 
-Sign up for Developer Edition
+###Sign up for Developer Edition###
 This workbook is designed to be used with a Sandbox or Developer Edition organization (or DE org for short). DE orgs are multipurpose environments with all of the features and permissions that allow you to develop, package, test, and install apps.
 
-In your browser, go to https://developer.salesforce.com/signup.
-Fill in the fields about you and your company.
-In the Email Address field, make sure to use a public address you can easily check from a Web browser.
-Type a unique Username. Note that this field is also in the form of an email address, but it does not have to be the same as your email address, and in fact, it’s usually better if they aren’t the same. Your username is your login and your identity on developer.salesforce.com, so you’re often better served by choosing a username such as firstname@lastname.com.
-Read and then select the checkbox for the Master Subscription Agreement and then click Submit Registration.
-In a moment you’ll receive an email with a login link. Click the link and change your password.
+1. In your browser, go to https://developer.salesforce.com/signup.
+2. Fill in the fields about you and your company.
+3. In the Email Address field, make sure to use a public address you can easily check from a Web browser.
+4. Type a unique Username. Note that this field is also in the form of an email address, but it does not have to be the same as your email address, and in fact, it’s usually better if they aren’t the same. Your username is your login and your identity on developer.salesforce.com, so you’re often better served by choosing a username such as firstname@lastname.com.
+5. Read and then select the checkbox for the Master Subscription Agreement and then click Submit Registration.
+6. In a moment you’ll receive an email with a login link. Click the link and change your password.
 You will only be able to deploy your trigger to a production environment if you use Sandbox org. Code written in DE orgs cannot be deployed to production environments.
+
 Create an Apex trigger
 Introduction
 
