@@ -168,6 +168,7 @@ Even though our trigger works in our Sandbox/DE org, we won’t be able to deplo
 That means that our test class needs to run at least 75% of the code we wrote in our trigger before we’re able to deploy it to a production environment. 
 
 Remember when we manually checked to see if our trigger worked in step 5 of the previous section? We basically want to do the exact same thing in our test class, but programmatically:
+
 1. Create a new Account and save it
 2. Check to see if a Case was automatically created on the Account
 3. Make sure the Case was created with the proper fields populated
