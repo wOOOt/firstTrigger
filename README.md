@@ -194,21 +194,28 @@ public class TestTShirtReminder {
   * `createAccount` is the name of our test method that will run when Salesforce is testing your code.
   * Don't worry about what the rest of the code says, every test class uses the same language so you'll simply copy/paste that syntax in the future.
 6. Your test class should look like this so far:
-7. <img src="https://lh5.googleusercontent.com/M6h8bgXvfjtBT_r3366x8R46hl-OHl8pOwc7EUs3hklzLfoPsQ6Gj-_BqoNWmt_oMXmz8C7q9PaUds4YpDPoMn0QX_VTt5vRr_aFQ4L5h2s16aI5x_PuJ0a9mAwcOa_u8g" />
 
-Step 2: Add business logic to your test class
-We’ll add business logic in our code that will make at least 75% of the code in our trigger run. Since our trigger runs whenever a new Account is created, we simply need to create a new Account and 100% of the lines of code in our trigger will run.
+<img src="https://lh5.googleusercontent.com/M6h8bgXvfjtBT_r3366x8R46hl-OHl8pOwc7EUs3hklzLfoPsQ6Gj-_BqoNWmt_oMXmz8C7q9PaUds4YpDPoMn0QX_VTt5vRr_aFQ4L5h2s16aI5x_PuJ0a9mAwcOa_u8g" />
 
-Create a new Account
-Add the following lines of code inside the createAccount() method brackets:
-	Account acc = new Account();
-This creates a new Account and sets it to an acc variable 
+###Step 2: Add business logic to your test class###
+We'll add business logic in our code that will make at least 75% of the code in our trigger run. Since our trigger runs whenever a new Account is created, we simply need to create a new Account and 100% of the lines of code in our trigger will run.
+
+1. Create a new Account
+2. Add the following lines of code inside the `createAccount()` method brackets:
+```
+Account acc = new Account();
+```
+  * This creates a new Account and sets it to an `acc` variable 
+```
 acc.Name    = 'Salesforce University';
-This sets the Account name to Salesforce University
-     insert acc;
-This line saves the Account into the Salesforce database
-Your code should now look like this:
-
+```
+  * This sets the Account name to Salesforce University
+```
+insert acc;
+```
+  * This line saves the Account into the Salesforce database
+3. Your code should now look like this:
+<img src="https://lh4.googleusercontent.com/BzlBYmAwWmx1M7N4xrBwM-FaOMJ0bo-jibWg1bBPgBOTSQmkn0KZ-2Cqpw9GiPsZARv4uLWsl6zM9lNFo4uh6fDtg--se901zVq9AM0cf97Da75FMBjuJkftW44NTAHDHQ" />
 
 
 Step 3 (Optional): Double check that the Case was created properly
