@@ -1,5 +1,4 @@
-Hands-On Workshop: Write your first Apex Trigger!
----------------
+#Hands-On Workshop: Write your first Apex Trigger!#
 
 This workbook shows you how to write a simple Apex trigger and deploy it in a production org. No prior coding experience is needed, however, a basic understanding of the Salesforce platform is helpful.
 
@@ -12,13 +11,13 @@ Apex triggers are used to extend the capabilities of the Salesforce platform bey
 
 This workbook will teach you all the components needed deploy an Apex trigger:
 
-How to write an Apex trigger 
-How to write a test class for your trigger
-How to deploy your Apex trigger using Change Sets
+* How to write an Apex trigger 
+* How to write a test class for your trigger
+* How to deploy your Apex trigger using Change Sets
 
 Apex triggers are a fun and surprisingly easy way to unlock the potential of your Salesforce org!
 
-Audience
+#Audience#
 These tutorials are intended for admins who have experience working on the Salesforce platform but no coding background.
 
 Users should be familiar with the following basic concepts of Salesforce before delving into Apex code:
